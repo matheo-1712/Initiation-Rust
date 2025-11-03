@@ -1,41 +1,29 @@
-use std::cmp::Ordering;
-use std::io;
-use rand::Rng;
-
+include!("initiation/jeu_nombres.rs");
 // main.rs
-fn main() { numbers();}
 
-// Jeu du nombre plus petit ou plus grand
-fn numbers() {
-
-    let mut rng = rand::thread_rng();
-    let nombre_secret = rng.gen_range(1..=100);
-
-    println!("Devinez le nombre !");
-
+fn main() {
     loop {
-        println!("Veuillez entrer un nombre :");
+        println!("=== MENU ===");
+        println!("1. Jeu de devinette (numbers)");
+        println!("2. Autre fonction (exemple)");
+        println!("3. Quitter");
 
-        let mut supposition = String::new();
-
-        // Lit la saisie de l'utilisateur
+        let mut choix = String::new();
+        println!("Entrez votre choix :");
         io::stdin()
-            .read_line(&mut supposition)
-            .expect("Échec de la lecture de l'entrée utilisateur");
+            .read_line(&mut choix)
+            .expect("Erreur de lecture");
 
-        let supposition: u32 = match supposition.trim().parse() {
-            Ok(nombre) => nombre,
-            Err(_) => continue,
-        };
+        let choix = choix.trim(); // enlever \n et espaces
 
-        // On vérifie si le numéro est inférieur ou supérieur
-        match supposition.cmp(&nombre_secret) {
-            Ordering::Less => println!("C'est plus !"),
-            Ordering::Greater => println!("C'est moins !"),
-            Ordering::Equal => {
-                println!("Vous avez gagné !");
-                break
-            },
+        match choix {
+            "1" => numbers(),
+            "2" => numbers(),
+            "3" => {
+                println!("Au revoir !");
+                break; // sortir de la boucle et terminer le programme
+            }
+            _ => println!("Choix invalide, réessayez."),
         }
     }
 }
