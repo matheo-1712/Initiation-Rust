@@ -1,44 +1,41 @@
+use std::cmp::Ordering;
 use std::io;
 use rand::Rng;
 
 // main.rs
 fn main() { numbers();}
 
+// Jeu du nombre plus petit ou plus grand
 fn numbers() {
 
     let mut rng = rand::thread_rng();
-    let nombre = rng.gen_range(1..=100);
+    let nombre_secret = rng.gen_range(1..=100);
 
     println!("Devinez le nombre !");
 
     loop {
         println!("Veuillez entrer un nombre :");
 
-        let mut saisie = String::new();
+        let mut supposition = String::new();
 
+        // Lit la saisie de l'utilisateur
         io::stdin()
-            .read_line(&mut saisie)
+            .read_line(&mut supposition)
             .expect("Échec de la lecture de l'entrée utilisateur");
 
-        // Convertit la saisie en i32
-        let supposition: i32 = match saisie.trim().parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Veuillez entrer un nombre valide !");
-                continue; // redemande une saisie
-            }
+        let supposition: u32 = match supposition.trim().parse() {
+            Ok(nombre) => nombre,
+            Err(_) => continue,
         };
 
-        if supposition < nombre {
-            println!("Trop petit !");
-        } else if supposition > nombre {
-            println!("Trop grand !");
-        } else if supposition == nombre {
-            println!("Bravo ! Vous avez trouvé 🎉");
-            break;
-        } else {
-            println!("Erreur !");
-            break;
+        // On vérifie si le numéro est inférieur ou supérieur
+        match supposition.cmp(&nombre_secret) {
+            Ordering::Less => println!("C'est plus !"),
+            Ordering::Greater => println!("C'est moins !"),
+            Ordering::Equal => {
+                println!("Vous avez gagné !");
+                break
+            },
         }
     }
 }
