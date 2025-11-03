@@ -1,11 +1,14 @@
 use std::io;
+use rand::Rng;
 
 // main.rs
 fn main() { numbers();}
 
 fn numbers() {
 
-    let nombre = 10;
+    let mut rng = rand::thread_rng();
+    let nombre = rng.gen_range(1..=100);
+
     println!("Devinez le nombre !");
 
     loop {
