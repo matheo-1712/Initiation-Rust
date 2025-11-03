@@ -1,11 +1,12 @@
 include!("initiation/jeu_nombres.rs");
-// main.rs
+include!("initiation/variables.rs");
 
+// main.rs
 fn main() {
     loop {
         println!("=== MENU ===");
         println!("1. Jeu de devinette (numbers)");
-        println!("2. Autre fonction (exemple)");
+        println!("2. Variables (variables)");
         println!("3. Quitter");
 
         let mut choix = String::new();
@@ -18,7 +19,7 @@ fn main() {
 
         match choix {
             "1" => numbers(),
-            "2" => numbers(),
+            "2" => variables(),
             "3" => {
                 println!("Au revoir !");
                 break; // sortir de la boucle et terminer le programme

@@ -10,6 +10,7 @@ fn numbers() {
 
     println!("Devinez le nombre !");
 
+    // Boucle infinie
     loop {
         println!("Veuillez entrer un nombre :");
 
