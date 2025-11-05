@@ -4,6 +4,7 @@ include!("initiation/une_autre_fonction.rs");
 include!("initiation/branches.rs");
 include!("initiation/possession.rs");
 include!("initiation/references.rs");
+include!("initiation/structure.rs");
 
 // main_menu.rs
 fn main_menu() {
@@ -15,6 +16,7 @@ fn main_menu() {
         println!("4. Branches (branches)");
         println!("5. Possession (possession)");
         println!("6. References (references)");
+        println!("7. Structures (structure)");
         println!("10. Quitter");
 
         let mut choix = String::new();
@@ -32,6 +34,7 @@ fn main_menu() {
             "4" => branches(),
             "5" => possession(),
             "6" => references(),
+            "7" => structure(),
             "10" => {
                 println!("Au revoir !");
                 break; // sortir de la boucle et terminer le programme
