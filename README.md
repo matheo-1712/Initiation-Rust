@@ -1,3 +1,3 @@
 https://jimskapt.github.io/rust-book-fr/
 
-Chapitre actuel : 6
+Chapitre actuel : 6.3

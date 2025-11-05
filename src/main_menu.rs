@@ -5,6 +5,7 @@ include!("initiation/branches.rs");
 include!("initiation/possession.rs");
 include!("initiation/references.rs");
 include!("initiation/structure.rs");
+include!("initiation/enumerations.rs");
 
 // main_menu.rs
 fn main_menu() {
@@ -17,6 +18,7 @@ fn main_menu() {
         println!("5. Possession (possession)");
         println!("6. References (references)");
         println!("7. Structures (structure)");
+        println!("8. Crash test loop (crash_test_loop)");
         println!("10. Quitter");
 
         let mut choix = String::new();
@@ -35,6 +37,7 @@ fn main_menu() {
             "5" => possession(),
             "6" => references(),
             "7" => structure(),
+            "8" => enumerations(),
             "10" => {
                 println!("Au revoir !");
                 break; // sortir de la boucle et terminer le programme
